@@ -5,52 +5,156 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    min-height: 100vh; /* Ensure the body covers the full viewport height */
+    display: flex;
+    flex-direction: column;
 }
 
+/* Header Styling */
 header {
     background-color: rgba(75, 71, 71, 0.7); /* Semi-transparent black background */
     color: white;
-    padding: 20px;
+    padding: 15px 20px; /* Reduced padding for better spacing */
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10; /* Ensure header is always on top */
+}
+
+#logo_div {
+    display: flex;
     align-items: center;
 }
 
 header img {
     height: 50px;
+    margin-right: 10px;
+}
+
+#name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
 }
 
 header button {
     background-color: white;
-    border-radius:10px;
+    border-radius: 10px;
     color: rgb(0, 0, 0);
     font-size: 16px;
     cursor: pointer;
+    padding: 10px 20px;
 }
-#name{
-    margin-top:0px ;
-    color: black;
 
+header button a {
+    text-decoration: none;
+    color: inherit;
 }
-#main_content{
+
+/* Main Content */
+main {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding: 20px; /* Padding around the content */
+    text-align: center;
 }
+
+.main_data {
+    margin: 10px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.7); /* Light background for better readability */
+    border-radius: 10px;
+    max-width: 300px;
+    width: 100%;
+}
+
+/* Centering content */
 .vertical-center {
-    margin: 0;
-    position: absolute;
+    position: relative;
     top: 50%;
-    -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
 
-/* For small screens (e.g., mobile devices) */
+/* Mobile and tablet view (max-width 767px) */
 @media (max-width: 767px) {
     body {
-      font-size: 14px;
+        font-size: 14px; /* Smaller font size for mobile */
+        background-image: none; /* Optional: Remove background image for mobile */
+        background-color: #f0f0f0; /* Optional: Add a background color for mobile */
     }
-  
-    .container {
-      padding: 10px;
+
+    header {
+        flex-direction: column; /* Stack header elements on smaller screens */
+        align-items: flex-start;
+        padding: 10px; /* Reduced padding for mobile */
     }
-  }
+
+    #logo_div {
+        margin-bottom: 10px;
+    }
+
+    header img {
+        height: 40px; /* Smaller image size on mobile */
+    }
+
+    header button {
+        padding: 8px 16px; /* Smaller button size */
+    }
+
+    .main_data {
+        width: 90%; /* Adjust the width of the content area */
+    }
+}
+
+/* Tablet view (768px to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    body {
+        font-size: 16px; /* Slightly smaller than desktop */
+    }
+
+    header {
+        padding: 15px 25px; /* Adjust header padding */
+    }
+
+    header img {
+        height: 45px; /* Slightly smaller image size for tablets */
+    }
+
+    header button {
+        padding: 10px 18px; /* Adjust button size for tablets */
+    }
+
+    .main_data {
+        width: 80%; /* Adjust content width for tablets */
+    }
+}
+
+/* Desktop view (1024px and above) */
+@media (min-width: 1024px) {
+    body {
+        font-size: 18px; /* Larger font for desktops */
+    }
+
+    header {
+        padding: 20px 40px; /* More padding for desktop view */
+    }
+
+    header img {
+        height: 50px; /* Default image size */
+    }
+
+    header button {
+        padding: 12px 24px; /* Default button padding */
+    }
+
+    .main_data {
+        width: 60%; /* More spacious content for larger screens */
+    }
+}
