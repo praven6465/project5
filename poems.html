@@ -5,71 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">   
 
     <title>Poems</title>
-    <style>
-        body  
- {
-            background-image: url('https://live.staticflickr.com/65535/51721684514_0cab2324be_b.jpg');
-            background-attachment: fixed;
-            background-size: cover;
-            animation: fade 5s infinite;
-        }
-
-        @keyframes fade {
-            0% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.8;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        article {
-            background-color: rgba(245, 237, 237, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-            display: block; /* Initially show all poems */
-            margin-bottom: 20px;
-        }
-
-        .hide-poem {
-            display: none; /* Hide the clicked poem */
-        }
-
-        textarea {
-            width: 100%;
-            height: 150px;
-            resize: none;
-            margin-bottom: 10px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .delete-button {
-            background-color: #f44336;
-            margin-left: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/poem.css">
 </head>
 <body>
 
-    <header>
-        <h1 style="text-align:left">Who will dry your eyes?</h1>
-    </header>
+    <div id="header-container"></div>
     <main>
         <article id="preloadedPoem">
            
@@ -153,5 +94,7 @@
             });
         </script>
     </main>
+
+    <script src="scripts/scripts.js"></script>
 </body>
 </html>
