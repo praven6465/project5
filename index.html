@@ -1,4 +1,72 @@
-<html>
++<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus-Blogg's</title>
+    <style>
+        body {
+            background-image: url('https://wallpapercave.com/wp/wp2627455.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
+        header {
+            background-color: rgba(75, 71, 71, 0.7); /* Semi-transparent black background */
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            height: 50px;
+        }
+
+        header button {
+            background-color: white;
+            border-radius:10px;
+            color: rgb(0, 0, 0);
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #name{
+            margin-top:0px ;
+            color: black;
+
+        }
+        #main_content{
+            display: flex;
+            justify-content: center;
+        }
+        .vertical-center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="logo_div">
+            <img src="https://www.nesabamedia.com/wp-content/uploads/2021/05/Nexus-Dock-Logo-1.png">
+            <p id="name">Nexus</p>
+        </div>
+        <div>
+            <button>Articles</button>
+            <button>Poems</button>
+            <button>Images</button>
+        </div>
+    </header>
+    <div id="main_content">
+        <p class="main_data vertical-center">The data</p>
+        <p class="main_data vertical-center">The data 2</p>
+    </div>
+</body>
 </html>
-<h1>Hello world</h1>
