@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+
+    <title>Poems</title>
+    <style>
+        body  
+ {
+            background-image: url('https://live.staticflickr.com/65535/51721684514_0cab2324be_b.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            animation: fade 5s infinite;
+        }
+
+        @keyframes fade {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        article {
+            background-color: rgba(245, 237, 237, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            display: block; /* Initially show all poems */
+            margin-bottom: 20px;
+        }
+
+        .hide-poem {
+            display: none; /* Hide the clicked poem */
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            resize: none;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .delete-button {
+            background-color: #f44336;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 style="text-align:left">Who will dry your eyes?</h1>
+    </header>
+    <main>
+        <article id="preloadedPoem">
+           
+            <section>
+                <CENTER><p>"We devote oun time,</p></CENTER>
+                <CENTER><p>and effort to love someone,</p></CENTER>
+                <CENTER><p>with all our hearts even Knowing it doesn't,</p></CENTER>
+                <CENTER><p>reciprocate !!"</p></CENTER>
+            </section>   
+            <header>
+            <h2 style="text-align:right">-Unrequited!!</h2> </p>
+            </header>
+
+
+        <textarea id="poem-input" placeholder="Write your poem here"></textarea>
+        <button onclick="addPoem()">Add Poem</button>
+
+        <script>
+            window.onload = function() {
+                const poems = JSON.parse(localStorage.getItem('poems') || '[]');
+                poems.forEach(poem => {
+                    const newPoem = document.createElement('article');
+                    newPoem.innerHTML = `
+                        <header>
+                            <h2>Your Poem</h2>
+                        </header>
+                        <section>
+                            <p>${poem}</p>
+                        </section>
+                        <button class="delete-button" onclick="confirmDelete(this)">Delete</button>
+                    `;
+                    document.querySelector('main').appendChild(newPoem);
+                });
+            };
+
+            function addPoem() {
+                const poemInput = document.getElementById('poem-input');
+                const poemText = poemInput.value;
+
+                if (poemText.trim() !== '') {
+                    const newPoem = document.createElement('article');
+                    newPoem.innerHTML = `
+                        <header>
+                            <h2>Your Poem</h2>
+                        </header>
+                        <section>
+                            <p>${poemText}</p>
+                        </section>
+                        <button class="delete-button" onclick="confirmDelete(this)">Delete</button>
+                    `;
+                    document.querySelector('main').appendChild(newPoem);
+                    poemInput.value = '';
+
+                    // Store the poem in local storage
+                    let poems = JSON.parse(localStorage.getItem('poems') || '[]');
+                    poems.push(poemText);
+                    localStorage.setItem('poems', JSON.stringify(poems));
+                }
+            }
+
+            function confirmDelete(button) {
+                if (confirm("Are you sure you want to delete this poem?")) {
+                    button.parentNode.remove();
+                    // Remove the poem from local storage
+                    let poems = JSON.parse(localStorage.getItem('poems') || '[]');
+                    const poemText = button.parentNode.querySelector('section p').textContent;
+                    poems = poems.filter(p => p !== poemText);
+                    localStorage.setItem('poems', JSON.stringify(poems));
+                }
+            }
+
+            // Add event listeners to show/hide poems on click
+            const poems = document.querySelectorAll('article');
+            poems.forEach(poem => {
+                poem.addEventListener('click', () => {
+                    // Exclude the preloaded poem from toggling
+                    if (poem.id !== 'preloadedPoem') {
+                        poem.classList.toggle('hide-poem');
+                    }
+                });
+            });
+        </script>
+    </main>
+</body>
+</html>
